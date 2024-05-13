@@ -1,3 +1,5 @@
 <?php
-$test = "hiii";
-echo $test;
+$cars = array("Peugeot", "Opel", "Ferrari");
+
+var_dump($cars[2]);
+?>
