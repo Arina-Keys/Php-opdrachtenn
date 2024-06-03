@@ -8,12 +8,10 @@ require ('database.php');
 //     echo "Error creating database" .$conn->error ;
 // }
 
-$sql = "CREATE TABLE  MyGuests (
-    id INT(6) unsigned auto_increment primary key,
-    bandname varchar(30) not null
-   
-    
-    )";
+// $sql = "CREATE TABLE  MyGuests (
+//     id INT(6) unsigned auto_increment primary key,
+//     bandname varchar(30) not null
+//     )";
 
 if($conn->query($sql) === true) {
     echo "Table created successfully";

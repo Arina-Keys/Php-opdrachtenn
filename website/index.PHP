@@ -25,7 +25,6 @@
 // }
 
 
-
 // if ($objectauto['kleur'] == "rood") {
 //     echo "Ik ben een rode auto!";
 // } else {
@@ -33,8 +32,8 @@
 // }
 // $sillycar = array ['sillycar.jpeg']
 // echo '$sillycar[ 'sillycar.jpeg' ]'
-// for ()
 
+require ('database.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,15 +57,20 @@
 
 
 <?php
-
-
-
 echo "$_POST[naam] <br>";
 echo "$_POST[email]";
+$dbname = "$_POST[naam]" ; 
 
 if ($_POST['naam'] == "Quinn" ){
     echo "kut kindje";
 }
+ $sql = "INSERT INTO MyGuests (bandname) VALUES ('$dbname')"; 
+
+ $result = $conn -> query ($sql);
+ if ($result) {
+    echo "yipiiee";
+ } else {
+    echo "nope";
+ }
 
 ?>
-
