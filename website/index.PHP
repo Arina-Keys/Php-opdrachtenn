@@ -1,40 +1,7 @@
 <?php
-
-// $kleur = $objectauto["kleur"];
-// $snelheid = $objectauto["snelheid"];
-// $zitplaatsen = $objectauto["zitplaatsen"];
-
-// echo "ik heb een auto die is $kleur. Hij rijdt $snelheid en de auto biedt plaats voor $zitplaatsen." ; 
-
-// $mijninfo = array("naam" => "Danique", "geboortedatum" => "05-07-2007", "woonplaats" => "Almere");
-
-// echo "Mijn naam is $mijninfo[naam].
-// Ik ben geboren op $mijninfo[geboortedatum], 
-// en woon in $mijninfo[woonplaats]."
-
-//$objectauto = array ("kleur" => "geel", "snelheid" => 76, "zitplaatsen" => 4);
-
-// if ($objectauto['snelheid'] < '50') {
-//     echo "dit is een langzame auto";
-// } elseif ($objectauto['snelheid'] >= 50 && $objectauto['snelheid'] <= 150){
-//     echo "Dit is een normale auto";
-// } elseif ($objectauto['snelheid'] > 150){
-//     echo "Dit is een snelle auto";
-// } else {
-//     echo "Deze auto rijdt niet";
-// }
-
-
-// if ($objectauto['kleur'] == "rood") {
-//     echo "Ik ben een rode auto!";
-// } else {
-//     echo "Ik ben een auto met een andere kleur.";
-// }
-// $sillycar = array ['sillycar.jpeg']
-// echo '$sillycar[ 'sillycar.jpeg' ]'
-
 require ('database.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,10 +12,16 @@ require ('database.php');
 </head>
 <body>
     <form method="post" action="http://localhost/Php-opdrachten/website/">
-        <p><strong>vul hier je naam in. </strong></p>
+        <p><strong>vul hier band naam in. </p>
         <input type="text" name="naam" > 
-        <p><strong>vul hier je email in. </strong></p>
-        <input type="email" name="email">
+        <br>
+        <p>selecteer genre </p></strong>
+        <select name="genre" id="genre" multiple>
+         <option value="rock">rock</option>
+         <option value="pop">pop</option>
+         <option value="hip-hop">hip-hop</option>
+         <option value="jazz">jaz</option>
+        </select>
         <br>
         <input type="submit">
     </form>
@@ -58,12 +31,8 @@ require ('database.php');
 
 <?php
 echo "$_POST[naam] <br>";
-echo "$_POST[email]";
 $dbname = "$_POST[naam]" ; 
 
-if ($_POST['naam'] == "Quinn" ){
-    echo "kut kindje";
-}
  $sql = "INSERT INTO MyGuests (bandname) VALUES ('$dbname')"; 
 
  $result = $conn -> query ($sql);
@@ -72,5 +41,8 @@ if ($_POST['naam'] == "Quinn" ){
  } else {
     echo "nope";
  }
+
+ 
+$query = $mysqli-> query ("SELECT * FROM bandname");
 
 ?>
