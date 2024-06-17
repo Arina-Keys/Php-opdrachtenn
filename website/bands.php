@@ -11,6 +11,7 @@ require ('database.php');
     <title>form</title>
 </head>
 <body>
+
     <form method="post" action="http://localhost/Php-opdrachten/website/">
         <p><strong>vul hier band naam in. </p>
         <input type="text" name="naam" > 
@@ -31,6 +32,7 @@ require ('database.php');
 
 <?php
 echo "$_POST[naam] <br>";
+echo "$_POST[genre] <br>";
 $dbname = "$_POST[naam]" ; 
 
  $sql = "INSERT INTO MyGuests (bandname) VALUES ('$dbname')"; 
