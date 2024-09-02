@@ -1,5 +1,6 @@
 <?php
-
+require ('database.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +12,11 @@
     <title>inlog</title>
 </head>
 <body>
+    <header>
+    <a href="http://localhost/Php-opdrachten/website/Programma.php">Programma</a>
+    <a href="http://localhost/Php-opdrachten/website/events.php">Evenementen</a>
+    </header>
+<method="post" action="http://localhost/Php-opdrachten/website/inlogpage.php"></method>
     <form methode="post">
         <p><strong>Vul hier je gebruikersnaam in.</strong></p>
         <input type="text" name="gnaam">

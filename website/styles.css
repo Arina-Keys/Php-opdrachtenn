@@ -3,3 +3,11 @@ body {
     text-align: center;
     color: darkred;
 }
+
+h1{
+    text-align: center;
+}
+
+h2 {
+    text-size-adjust: 10px;
+}
