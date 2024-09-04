@@ -1,6 +1,6 @@
 <?php
-require ('database.php');
 session_start();
+require ('database.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,10 +18,14 @@ session_start();
     </header>
 <method="post" action="http://localhost/Php-opdrachten/website/inlogpage.php"></method>
     <form methode="post">
-        <p><strong>Vul hier je gebruikersnaam in.</strong></p>
+        <p><strong>Vul hier je email in.</strong></p>
         <input type="text" name="gnaam">
         <p><strong>Vul hier je wachtwoord in.</strong></p>
         <input type="password" naam="ww"> 
+
+        <div class="container signin">
+    <p>Don't have an account? <a href="http://localhost/Php-opdrachten/website/register.php">Make one here</a>.</p>
+  </div>
     </form>
     
 </body>

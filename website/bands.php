@@ -1,6 +1,6 @@
 <?php
-require ('database.php');
 session_start();
+require ('database.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,6 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <h2>Bands</h2>
 </head>
 <body>
     <header>
@@ -22,7 +21,7 @@ session_start();
 
     <form method="post" action="http://localhost/Php-opdrachten/website/bands.php">
         <p><strong>vul hier band naam in. </p>
-        <input type="text" name="naam" > 
+        <input type="text" name="bandnaam" > 
         <br>
         <p>selecteer genre </p></strong>
         <select name="genre" id="genre">
@@ -44,7 +43,7 @@ echo "$_POST[naam]";
 echo "$_POST[genre]";
 $bandname = "$_POST[naam]"; 
 
-$sql = "INSERT INTO MyGuests (bandname) VALUES ('$bandname')"; 
+$sql = "INSERT INTO Bands (bandname) VALUES ('$bandname')"; 
 
  $result = $conn->query($sql);
  if ($result) {
