@@ -9,45 +9,39 @@ require ('database.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>inlog</title>
+    <title>Registration</title>
 </head>
 <body>
     <header>
-    <a href="http://localhost/Php-opdrachten/website/Programma.php">Programma</a>
-    <a href="http://localhost/Php-opdrachten/website/events.php">Evenementen</a>
+        <a href="Programma.php">Programma</a>
+        <a href="events.php">Evenementen</a>
     </header>
 
-    <method="post" action="http://localhost/Php-opdrachten/website/inlogpage.php"></method>
-    <form action="database.php" methode="post">
-    <p>Please fill in this form to create an account.</p>
-    <hr>
+    <form action="inlogpage.php" method="post">
+        <p>Please fill in this form to create an account.</p>
+        <hr>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-    <hr>
-    <button type="submit" class="registerbtn">Register</button>
-     
-    <div class="container signin">
-    <p>Already have an account? <a href="http://localhost/Php-opdrachten/website/inlogpage.php">Sign in</a>.</p>
-    </div>
+        <hr>
+        <button type="submit" class="registerbtn">Register</button>
+        
+        <div class="container signin">
+            <p>Already have an account? <a href="inlogpage.php">Sign in</a>.</p>
+        </div>
     </form>
-    
 </body>
 </html>
 
 <?php 
-    $servername = "mysql";
-    $username = "root";
-    $password = "password";
-    $dbname = "myDB";
+
     $email = $_GET['email']; 
     $psw = $_GET['psw'];
                                                
-    $conn = new mysql('Fullstack','root', '' , 'MyDB'); 
     if($conn->connect_error){    
     die('Connection failed : '.$conn->connect_error);
      } else {    

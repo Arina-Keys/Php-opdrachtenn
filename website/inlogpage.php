@@ -1,6 +1,31 @@
 <?php
 session_start();
 require ('database.php');
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $psw = $_POST['psw'];
+
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    $psw = htmlspecialchars($psw);
+
+    $hashed_psw = password_hash($psw, PASSWORD_DEFAULT);
+
+   
+
+    $stmt = $conn->prepare("INSERT INTO accounts (email, psw) VALUES (?, ?)");
+    $stmt->bind_param("ss", $email, $hashed_psw);
+
+    if ($stmt->execute()) {
+        echo "New account created successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,3 +55,5 @@ require ('database.php');
     
 </body>
 </html>
+
+
