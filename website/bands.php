@@ -15,7 +15,7 @@ require ('database.php');
         <a href="http://localhost/Php-opdrachten/website/Programma.php">Programma</a>
     </header>
 
-    <h1><strong>Create bands and events</strong></h1>
+    <h1><strong>Maak bands and evenementen</strong></h1>
 
     <div class="flexcontainer">
         <div>
@@ -29,28 +29,27 @@ require ('database.php');
             <option value="pop">pop</option>
             <option value="hip-hop">hip-hop</option>
             <option value="jazz">jazz</option>
-        </select>  
-        <button type="submit">Submit band</button>
+        </select>  <br>
+        <button type="submit">Voer band in</button>
     </form>
     </div>
     <div>
-    <form method="post" action="http://localhost/Php-opdrachten/website/bands.php">
-    <p><strong>Vul hier de naam van het event in:</strong></p>
+    <form method="post" action="http://localhost/Php-opdrachten/website/bands.php" class="eventform">
+    <p><strong>Vul hier de naam van het evenement in:</strong></p>
     <input type="text" name="eventname" required>
     <br>
     <p><strong>Event datum:</strong></p>
     <input type="date" name="date" required>
-    <p>Start tijd:</p>
+    <p><strong>Start tijd:</strong></p>
     <input type="time" name="starttime" required>
     <p><strong>Eind tijd:</strong></p>
     <input type="time" name="endtime">
     <p><strong>Prijs:</strong></p>
     <input type="number" step="any" name="price">
     <br>
-    <p><strong>Selecteer bands voor dit event:</strong></p>
+    <p><strong>Selecteer bands voor dit evenement:</strong></p>
     <select name="band_ids[]" multiple required>
         <?php
-        //get bands for dropdown
         $result = $conn->query("SELECT id, bandname FROM bands");
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -62,7 +61,7 @@ require ('database.php');
         ?>
     </select>
     <br>
-    <input type="submit" value="Create Event">
+    <button type="submit">Maak evenement</button>
 </form>
     </div>
     </div>
@@ -70,12 +69,10 @@ require ('database.php');
 </html>
 
 <?php
-// Check if form is submitted
 if (!empty($_POST['bandname']) && !empty($_POST['genre'])) {
     $bandname = $_POST['bandname'];
     $genre = $_POST['genre'];
 
-    // Use prepared statements to prevent SQL injection
     $stmt = $conn->prepare("INSERT INTO bands (bandname, genre) VALUES (?, ?)");
     $stmt->bind_param("ss", $bandname, $genre);
 
@@ -87,7 +84,6 @@ if (!empty($_POST['bandname']) && !empty($_POST['genre'])) {
 
     $stmt->close();
 
-    // Fetch and display bands
     $query = $conn->query("SELECT * FROM bands");
     while ($row = $query->fetch_assoc()) {
         echo "<p>Band: " . $row['bandname'] . " | Genre: " . $row['genre'] . "</p>";

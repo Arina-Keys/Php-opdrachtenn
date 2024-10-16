@@ -46,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $endtime = $_POST['endtime'];
     $price = $_POST['price'];
 
-    // Insert into the events table with the new price column
     $stmt = $conn ->prepare("INSERT INTO events (eventname, date, starttime, endtime, price) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssd", $eventname, $date, $starttime, $endtime, $price);
 
